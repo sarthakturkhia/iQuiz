@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rUe-NE-wvk">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="dXe-dY-SpZ">
+            <objects>
+                <navigationController id="rUe-NE-wvk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="QoY-wY-OVY">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="f7L-ls-Ln0" kind="relationship" relationship="rootViewController" id="t2l-CX-OvF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rXv-Rl-fsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1953" y="-80"/>
+        </scene>
+        <!--iQuiz-->
+        <scene sceneID="24f-Ry-aej">
+            <objects>
+                <tableViewController title="iQuiz" id="f7L-ls-Ln0" customClass="TableViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="AVt-lc-QNd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuizCell" rowHeight="100" id="wMl-Dt-MTN" userLabel="QuizCell" customClass="TableCellTableViewCell" customModule="iQuiz" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wMl-Dt-MTN" id="ITX-If-JzC">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADs-nx-1Va" userLabel="Title">
+                                            <rect key="frame" x="165" y="11" width="45" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cut-ue-6OC" userLabel="Description">
+                                            <rect key="frame" x="165" y="48" width="88" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ADs-nx-1Va" firstAttribute="leading" secondItem="ITX-If-JzC" secondAttribute="leadingMargin" constant="149" id="3tq-0L-oCi"/>
+                                        <constraint firstItem="cut-ue-6OC" firstAttribute="top" secondItem="ADs-nx-1Va" secondAttribute="bottom" constant="8" symbolic="YES" id="DgD-nt-uDh"/>
+                                        <constraint firstItem="ADs-nx-1Va" firstAttribute="top" secondItem="ITX-If-JzC" secondAttribute="topMargin" id="aE9-QX-5Gr"/>
+                                        <constraint firstItem="cut-ue-6OC" firstAttribute="leading" secondItem="ITX-If-JzC" secondAttribute="leadingMargin" constant="149" id="clA-iY-97U"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="desc" destination="cut-ue-6OC" id="yJm-ch-amd"/>
+                                    <outlet property="title" destination="ADs-nx-1Va" id="s8Z-GJ-T3e"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="f7L-ls-Ln0" id="YMn-ZH-DKd"/>
+                            <outlet property="delegate" destination="f7L-ls-Ln0" id="Lse-ui-Fbk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="iQuiz" id="riP-I2-KgG" userLabel="navitem">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="C4d-bt-wPG" userLabel="Settings">
+                            <connections>
+                                <action selector="SettingsPressed:" destination="f7L-ls-Ln0" id="TTK-vH-jxp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fg3-Dp-RQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-954.39999999999998" y="-81.409295352323838"/>
+        </scene>
+    </scenes>
+</document>
