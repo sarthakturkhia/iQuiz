@@ -40,24 +40,39 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADs-nx-1Va" userLabel="Title">
-                                            <rect key="frame" x="165" y="11" width="45" height="29"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cut-ue-6OC" userLabel="Description">
+                                            <rect key="frame" x="118" y="46" width="241" height="43"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cut-ue-6OC" userLabel="Description">
-                                            <rect key="frame" x="165" y="48" width="88" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marvel" translatesAutoresizingMaskIntoConstraints="NO" id="RMl-Yr-v4S">
+                                            <rect key="frame" x="8" y="0.0" width="102" height="89"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="102" id="xAC-Lz-iDm"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADs-nx-1Va" userLabel="Title">
+                                            <rect key="frame" x="118" y="0.0" width="213" height="43"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="43" id="0FI-ij-beV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="ADs-nx-1Va" firstAttribute="leading" secondItem="ITX-If-JzC" secondAttribute="leadingMargin" constant="149" id="3tq-0L-oCi"/>
-                                        <constraint firstItem="cut-ue-6OC" firstAttribute="top" secondItem="ADs-nx-1Va" secondAttribute="bottom" constant="8" symbolic="YES" id="DgD-nt-uDh"/>
-                                        <constraint firstItem="ADs-nx-1Va" firstAttribute="top" secondItem="ITX-If-JzC" secondAttribute="topMargin" id="aE9-QX-5Gr"/>
-                                        <constraint firstItem="cut-ue-6OC" firstAttribute="leading" secondItem="ITX-If-JzC" secondAttribute="leadingMargin" constant="149" id="clA-iY-97U"/>
+                                        <constraint firstItem="cut-ue-6OC" firstAttribute="trailing" secondItem="ITX-If-JzC" secondAttribute="trailingMargin" id="1hD-tX-nim"/>
+                                        <constraint firstItem="RMl-Yr-v4S" firstAttribute="bottom" secondItem="ITX-If-JzC" secondAttribute="bottomMargin" id="39R-Fn-BXV"/>
+                                        <constraint firstItem="RMl-Yr-v4S" firstAttribute="leading" secondItem="ITX-If-JzC" secondAttribute="leadingMargin" constant="-8" id="9yz-AH-DzW"/>
+                                        <constraint firstItem="RMl-Yr-v4S" firstAttribute="top" secondItem="ADs-nx-1Va" secondAttribute="top" id="IcE-3P-8uV"/>
+                                        <constraint firstItem="ADs-nx-1Va" firstAttribute="leading" secondItem="cut-ue-6OC" secondAttribute="leading" id="KLF-Vi-K1U"/>
+                                        <constraint firstItem="RMl-Yr-v4S" firstAttribute="bottom" secondItem="cut-ue-6OC" secondAttribute="bottom" id="Mtf-wG-6g2"/>
+                                        <constraint firstItem="RMl-Yr-v4S" firstAttribute="top" secondItem="ITX-If-JzC" secondAttribute="top" id="ZEx-UH-7dz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ADs-nx-1Va" secondAttribute="trailing" constant="28" id="uFB-TI-Rry"/>
+                                        <constraint firstItem="cut-ue-6OC" firstAttribute="top" secondItem="ADs-nx-1Va" secondAttribute="bottom" constant="3" id="woi-de-e3A"/>
+                                        <constraint firstItem="ADs-nx-1Va" firstAttribute="leading" secondItem="RMl-Yr-v4S" secondAttribute="trailing" constant="8" symbolic="YES" id="zbQ-fy-5JG"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -84,4 +99,7 @@
             <point key="canvasLocation" x="-954.39999999999998" y="-81.409295352323838"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Marvel" width="700" height="700"/>
+    </resources>
 </document>
