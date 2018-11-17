@@ -8,11 +8,29 @@
 
 import UIKit
 
+var currentIndex: Int?
+
+var categories: [String] = ["Marvel", "DC Comics", "Science"]
+var questionBank : [String: [String]] = ["Marvel":["What is the name of the actor that plays Iron Man in the Avengers Movie?", "Which marvel superhero's skeleton is made out of ademantium?"],
+                                         "DC":["What is the name of Batman's butler?", "What is superman's home planet called?"],
+                                         "Science":["Which one of these is not a sub-atomic particle?", "The speed of sound is fastest in?"]]
+var answerBank : [String: [[String]]] = [
+    "Marvel":[["Chris Evans", "Chris Hemsworth", "Mark Ruffalo", "Robert Downey Jr"], ["Superman", "Iron Man", "Wolverine", "Thor"]],
+    "DC":[["Alfred", "Algor", "Al pacino", "Allan"], ["Korton", "Krypton", "Kiltron", "Earth"]],
+    "Science": [["Proton", "Electron", "Positron", "Hydron"], ["Liquid", "Gas", "Vaccum", "Solid"]]]
+
+var answer: [String: [String]] = ["Marvel" : ["4", "3"],
+                                  "DC" : ["1", "2"],
+                                  "Science" : ["4", "4"]]
+
+
+
+
 class TableViewController: UITableViewController {
-    
-    var categories: [String] = ["Marvel", "DC Comics", "Science"]
-    var desc: [String] = ["Questions from the Marvel Universe", "Questions from the DC universe", "Science questions and Facts"]
     var images: [String] = ["Marvel", "DC", "Science"]
+    var desc: [String] = ["Questions from the Marvel Universe", "Questions from the DC universe", "Science questions and Facts"]
+    var url : String = ""
+    
 
     override func viewDidLoad() {
         self.tableView.rowHeight = 100
@@ -23,10 +41,16 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        url = "http://tednewardsandbox.site44.com/questions.json"
+        getJson(url)
     }
 
     // MARK: - Table view data source
 
+    func getJson(_ url: String) {
+        
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -36,19 +60,20 @@ class TableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return categories.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath) as! TableCellTableViewCell
-    
+        
         // Configure the cell...
-        cell.title.text = self.categories[indexPath.row]
+        cell.title.text = categories[indexPath.row]
         cell.desc.text = self.desc[indexPath.row]
         cell.imageView?.image = UIImage(named: self.images[indexPath.row])
-        
-
         return cell
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        currentIndex = tableView.indexPathForSelectedRow?.row
+    }
+
  
     @IBAction func SettingsPressed(_ sender: UIBarButtonItem) {
         let alertControl = UIAlertController(title: "Settings", message: "Check back for Settings!", preferredStyle: .alert)
