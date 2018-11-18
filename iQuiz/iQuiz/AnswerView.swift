@@ -9,14 +9,48 @@
 import UIKit
 
 class AnswerView: UIViewController {
-
+    
+    var correctAnswer: Bool! = false
+    var answer: String?
+    var i: Int = 1
+    var score: Int = 0
+    var questionCount: Int = 1
+    
+    @IBOutlet weak var answerLabel: UILabel!
+    
+    @IBOutlet weak var correctAnswerLAbel: UILabel!
+    
+    @IBOutlet weak var ScoreLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if(correctAnswer){
+            answerLabel.text = "Correct"
+            answerLabel.textColor = UIColor.green
+        }
+        else{
+            answerLabel.text = "Incorrect"
+            answerLabel.textColor = UIColor.red
+        }
+        correctAnswerLAbel.text = self.answer!
+        ScoreLabel.text?.append(String(self.score))
     }
     
 
+    @IBAction func NextClick(_ sender: Any) {
+        if i <= questionCount{
+             let questionVC = self.storyboard?.instantiateViewController(withIdentifier: "QuestionView") as! QuestionView
+            questionVC.i = self.i
+            questionVC.score = self.score
+            self.present(questionVC, animated: true, completion: nil)
+            }
+        else{
+             let finishVC = self.storyboard?.instantiateViewController(withIdentifier: "finishView") as! FinsihView
+            finishVC.score = self.score
+            finishVC.questionCount = self.questionCount
+            self.present(finishVC, animated: true, completion: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 

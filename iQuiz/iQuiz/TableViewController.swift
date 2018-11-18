@@ -8,9 +8,9 @@
 
 import UIKit
 
-var currentIndex: Int?
+var currentIndex: Int = 0
 
-var categories: [String] = ["Marvel", "DC Comics", "Science"]
+var categories: [String] = ["Marvel", "DC", "Science"]
 var questionBank : [String: [String]] = ["Marvel":["What is the name of the actor that plays Iron Man in the Avengers Movie?", "Which marvel superhero's skeleton is made out of ademantium?"],
                                          "DC":["What is the name of Batman's butler?", "What is superman's home planet called?"],
                                          "Science":["Which one of these is not a sub-atomic particle?", "The speed of sound is fastest in?"]]
@@ -42,14 +42,14 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         url = "http://tednewardsandbox.site44.com/questions.json"
-        getJson(url)
+//        getJson(url)
     }
 
     // MARK: - Table view data source
 
-    func getJson(_ url: String) {
-        
-    }
+//    func getJson(_ url: String) {
+//
+//    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -70,10 +70,12 @@ class TableViewController: UITableViewController {
         cell.imageView?.image = UIImage(named: self.images[indexPath.row])
         return cell
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        currentIndex = tableView.indexPathForSelectedRow?.row
+        currentIndex = (tableView.indexPathForSelectedRow?.row)!
     }
-
+    
+    
  
     @IBAction func SettingsPressed(_ sender: UIBarButtonItem) {
         let alertControl = UIAlertController(title: "Settings", message: "Check back for Settings!", preferredStyle: .alert)
