@@ -30,19 +30,42 @@ class TableViewController: UITableViewController {
     var images: [String] = ["Marvel", "DC", "Science"]
     var desc: [String] = ["Questions from the Marvel Universe", "Questions from the DC universe", "Science questions and Facts"]
     var url : String = ""
-    
-
+   // var defaultURL: String = "http://www.json-generator.com/api/json/get/cgenUKMUGG?indent=2"
+    var defaultUrl : String = ""
     override func viewDidLoad() {
-        url = "http://tednewardsandbox.site44.com/questions.json"
-        getJson(url)
+        defaultUrl = "http://tednewardsandbox.site44.com/questions.json"
+        checkConnection()
         self.tableView.rowHeight = 100
         super.viewDidLoad()
-
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(checkConnection), for: .valueChanged)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func checkConnection() {
+        if Reachability.isConnectedToNetwork() == true{
+            print("Internet is connected")
+            if (UserDefaults.standard.string(forKey: "url") != "" || UserDefaults.standard.string(forKey: "url") != nil){
+                if UserDefaults.standard.string(forKey: "url") != nil{
+                      url = UserDefaults.standard.string(forKey: "url")!
+                }
+                getJson(url)
+            }
+            self.tableView.refreshControl?.endRefreshing()
+        }
+        else{
+            print("Internet is NOT connected")
+            let alertControl = UIAlertController(title: "Error", message: "Internet Connection Failed", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertControl.addAction(cancelAction)
+            self.present(alertControl, animated: true)
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -102,11 +125,11 @@ class TableViewController: UITableViewController {
                         }
                         // replace data models with exisisting data structures
                         questionBank[currentCat!] = questText
-                        print(questionBank)
+//                        print(questionBank)
                         answerBank[currentCat!] = allAnswers
-                        print(answerBank)
+//                        print(answerBank)
                         answer[currentCat!] = correctAnswers
-                        print(answer)
+//                        print(answer)
                     }
                 }
                 DispatchQueue.main.async {
@@ -114,7 +137,11 @@ class TableViewController: UITableViewController {
                 }
             }
             catch{
-                
+                print("Error: Download Failed")
+                let alertControl = UIAlertController(title: "Error", message: "Download Failed", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertControl.addAction(cancelAction)
+                self.present(alertControl, animated: true)
             }
         }
         task.resume()
@@ -147,11 +174,23 @@ class TableViewController: UITableViewController {
     
  
     @IBAction func SettingsPressed(_ sender: UIBarButtonItem) {
-        let alertControl = UIAlertController(title: "Settings", message: "Check back for Settings!", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default){
-            action in
-        }
+        let alertControl = UIAlertController(title: "Settings", message: "Enter your custom data URL here", preferredStyle: .alert)
+        var textField = UITextField()
+        alertControl.addTextField(configurationHandler: {{ (theTextField : UITextField) in
+            textField = theTextField
+            textField.placeholder = "http://tednewardsandbox.site44.com/questions.json"
+            }}())
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Check Now", style: .default, handler: {
+            (action : UIAlertAction) in
+            if textField.text != "" && textField.text != nil {
+                UserDefaults.standard.set(textField.text!, forKey: "url")
+                self.checkConnection()
+            }
+        })
         alertControl.addAction(okAction)
+        alertControl.addAction(cancelAction)
         self.present(alertControl, animated: true)
     }
     

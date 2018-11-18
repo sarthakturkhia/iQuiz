@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A81402BE21A1022800A891D7 /* FinsihView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81402BD21A1022800A891D7 /* FinsihView.swift */; };
+		A81402C021A1565600A891D7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A81402BF21A1565600A891D7 /* Settings.bundle */; };
+		A81402C221A15B9200A891D7 /* settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81402C121A15B9200A891D7 /* settings.swift */; };
 		A826E57A2191B77000FC68DB /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A826E5792191B77000FC68DB /* AnswerView.swift */; };
 		A8B24290218703F200850CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B2428F218703F200850CC9 /* AppDelegate.swift */; };
 		A8B24292218703F200850CC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B24291218703F200850CC9 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		A81402BD21A1022800A891D7 /* FinsihView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinsihView.swift; sourceTree = "<group>"; };
+		A81402BF21A1565600A891D7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		A81402C121A15B9200A891D7 /* settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settings.swift; sourceTree = "<group>"; };
 		A826E5792191B77000FC68DB /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 		A8B2428C218703F200850CC9 /* iQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8B2428F218703F200850CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			children = (
 				A8B24293218703F200850CC9 /* Main.storyboard */,
 				A8B242C12188058F00850CC9 /* TableCellTableViewCell.swift */,
+				A81402C121A15B9200A891D7 /* settings.swift */,
 				A8B242BF218804A400850CC9 /* TableViewController.swift */,
 				A8B2428F218703F200850CC9 /* AppDelegate.swift */,
 				A8B24291218703F200850CC9 /* ViewController.swift */,
@@ -118,6 +123,7 @@
 				A8B47F6E219173530074714E /* QuestionView.swift */,
 				A826E5792191B77000FC68DB /* AnswerView.swift */,
 				A81402BD21A1022800A891D7 /* FinsihView.swift */,
+				A81402BF21A1565600A891D7 /* Settings.bundle */,
 			);
 			path = iQuiz;
 			sourceTree = "<group>";
@@ -244,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A81402C021A1565600A891D7 /* Settings.bundle in Resources */,
 				A8B2429A218703F400850CC9 /* LaunchScreen.storyboard in Resources */,
 				A8B24297218703F400850CC9 /* Assets.xcassets in Resources */,
 				A8B24295218703F200850CC9 /* Main.storyboard in Resources */,
@@ -273,6 +280,7 @@
 			files = (
 				A8B47F6F219173530074714E /* QuestionView.swift in Sources */,
 				A8B24292218703F200850CC9 /* ViewController.swift in Sources */,
+				A81402C221A15B9200A891D7 /* settings.swift in Sources */,
 				A826E57A2191B77000FC68DB /* AnswerView.swift in Sources */,
 				A8B242C0218804A400850CC9 /* TableViewController.swift in Sources */,
 				A8B242C22188058F00850CC9 /* TableCellTableViewCell.swift in Sources */,
