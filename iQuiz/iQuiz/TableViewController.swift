@@ -33,6 +33,8 @@ class TableViewController: UITableViewController {
     
 
     override func viewDidLoad() {
+        url = "http://tednewardsandbox.site44.com/questions.json"
+        getJson(url)
         self.tableView.rowHeight = 100
         super.viewDidLoad()
 
@@ -41,15 +43,82 @@ class TableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        url = "http://tednewardsandbox.site44.com/questions.json"
-//        getJson(url)
     }
 
     // MARK: - Table view data source
 
-//    func getJson(_ url: String) {
-//
-//    }
+    func getJson(_ url: String) {
+        guard let url = URL(string: url) else {
+            print("bad URL")
+            return
+        }
+        print("Searching: \(url)")
+        
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "Download failed")
+                return
+            }
+            do {
+                let myjson = try JSONSerialization.jsonObject(with: data, options: [])
+                guard let jsonArray = myjson as? [[String: Any]]
+                    else {
+                    print("got nothing")
+                    return
+                    }
+                
+                var currentCat: String?
+                categories.removeAll()
+                self.desc.removeAll()
+                questionBank.removeAll()
+                answerBank.removeAll()
+                answer.removeAll()
+               // var questionDict: [String: [NSArray]] = [:]
+                
+                
+                for json in jsonArray{
+                    var questArray: [NSArray] = []
+                    currentCat = json["title"] as? String
+                    categories.append(currentCat!)
+                    self.desc.append(json["desc"] as! String)
+                    guard let question = json["questions"] as? NSArray else {
+                        print("No questions in Category")
+                        return
+                    }
+                    questArray.append(question)
+                    for question in questArray{
+                        var questText: [String] = []
+                        var allAnswers: [[String]] = []
+                        var correctAnswers: [String] = []
+                        for elem in question{
+                            let tempDict: [String: Any] = elem as! [String : Any]
+                            let ans = tempDict["answers"]! as? [String]
+                            let correctAnswer = tempDict["answer"] as? String
+                            allAnswers.append(ans!)
+                            let que = tempDict["text"] as? String
+                            questText.append(que!)
+                            correctAnswers.append(correctAnswer!)
+                        }
+                        // replace data models with exisisting data structures
+                        questionBank[currentCat!] = questText
+                        print(questionBank)
+                        answerBank[currentCat!] = allAnswers
+                        print(answerBank)
+                        answer[currentCat!] = correctAnswers
+                        print(answer)
+                    }
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            catch{
+                
+            }
+        }
+        task.resume()
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

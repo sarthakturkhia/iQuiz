@@ -31,6 +31,8 @@ class QuestionView: UIViewController, UITableViewDelegate {
         currentCategory = categories[currentIndex]
         NavBar.title = currentCategory
         questions = questionBank[currentCategory]
+//        print("check " + String(i))
+//        print(questions)
         TestLabel.text = questions?[i]
         answers = (answerBank[currentCategory])![i]
         setupButtons()
@@ -80,6 +82,7 @@ class QuestionView: UIViewController, UITableViewDelegate {
             let answerVC = self.storyboard?.instantiateViewController(withIdentifier: "answer") as! AnswerView
             let tempAns = answer[currentCategory]![i]
             answerVC.answer = answers![(Int(tempAns)!) - 1]
+            answerVC.questionCount = (questions?.count)!
             if(selected == answer[currentCategory]![i]){
                 answerVC.correctAnswer = true
                 answerVC.score = self.score + 1
@@ -88,7 +91,7 @@ class QuestionView: UIViewController, UITableViewDelegate {
                 answerVC.correctAnswer = false
                 answerVC.score = self.score
             }
-            answerVC.i = self.i + 1
+            answerVC.i = self.i 
             self.present(answerVC, animated: true, completion: nil)
         }
     }

@@ -38,9 +38,11 @@ class AnswerView: UIViewController {
     
 
     @IBAction func NextClick(_ sender: Any) {
-        if i <= questionCount{
+        print(questionCount)
+        print(i)
+        if (i + 1) < questionCount{
              let questionVC = self.storyboard?.instantiateViewController(withIdentifier: "QuestionView") as! QuestionView
-            questionVC.i = self.i
+            questionVC.i = self.i + 1
             questionVC.score = self.score
             self.present(questionVC, animated: true, completion: nil)
             }

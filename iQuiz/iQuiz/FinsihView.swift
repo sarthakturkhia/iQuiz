@@ -22,7 +22,7 @@ class FinsihView: UIViewController {
             finalMessage.text = "Maybe Next Time!"
             finalMessage.textColor = UIColor.red
         }
-        else if(score == questionCount + 1){
+        else if(score == questionCount){
             finalMessage.text = "Congratulations"
             finalMessage.textColor = UIColor.green
         }
@@ -32,7 +32,7 @@ class FinsihView: UIViewController {
         }
         Score.text = String(score)
         Score.text?.append(" on ")
-        Score.text?.append(String(questionCount + 1))
+        Score.text?.append(String(questionCount))
     }
     
     @IBAction func finishAction(_ sender: Any) {
